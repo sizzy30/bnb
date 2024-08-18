@@ -46,21 +46,23 @@ private JWTService jwtService;
         Optional<AppUser> byUsername = appUserRepository.findByUsername(LoginDto.getUsername());
         if(byUsername.isPresent()){
             AppUser user =byUsername.get();
-         if( BCrypt.checkpw(dto.getPassword(),user.getPassword())){
+            if( BCrypt.checkpw(dto.getPassword(),user.getPassword())){
             return jwtService.generateToken(user);
          }
         }
         return null;
     }
-
+//MaptoEntity
     public AppUser maptoEntity(AppUserDto dto){
         AppUser user=new AppUser();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setUsername(dto.getUsername());
+        user.setRole(dto.getRole());
         return user;
     }
+    //MaptoDto
     public AppUserDto maptoDto(AppUser user){
         AppUserDto dto=new AppUserDto();
         dto.setId(user.getId());
@@ -68,6 +70,7 @@ private JWTService jwtService;
         dto.setEmail(user.getEmail());
         dto.setUsername(user.getUsername());
         dto.setPassword(user.getPassword());
+        dto.setRole(user.getRole());
         return dto;
     }
 }

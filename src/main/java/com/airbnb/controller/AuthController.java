@@ -20,11 +20,24 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping
+    @PostMapping("/createUser")
     public ResponseEntity<AppUserDto> createUser(@RequestBody AppUserDto appUserDto){
+        appUserDto.setRole("ROLE_USER");
         AppUserDto result=authService.create(appUserDto);
 return new ResponseEntity<>(result, HttpStatus.CREATED);
 }
+    @PostMapping("/createPropertyOwner")
+    public ResponseEntity<AppUserDto> createpropertyOwner(@RequestBody AppUserDto appUserDto){
+        appUserDto.setRole("ROLE_OWNER");
+        AppUserDto result=authService.create(appUserDto);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+    @PostMapping("/createPropertyManager")
+    public ResponseEntity<AppUserDto> createpropertyManager(@RequestBody AppUserDto appUserDto){
+        appUserDto.setRole("ROLE_MANAGER");
+        AppUserDto result=authService.create(appUserDto);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
 
 @PostMapping("/login")
 public ResponseEntity<?> login(@RequestBody LoginDto dto ){
