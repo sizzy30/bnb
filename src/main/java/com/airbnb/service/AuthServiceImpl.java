@@ -1,6 +1,6 @@
 package com.airbnb.service;
 
-import com.airbnb.AppUserRepository;
+import com.airbnb.repository.AppUserRepository;
 import com.airbnb.entity.AppUser;
 import com.airbnb.exception.UserExists;
 import com.airbnb.payload.AppUserDto;

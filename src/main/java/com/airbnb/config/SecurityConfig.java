@@ -18,13 +18,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable().cors().disable();
-      //  http.authorizeHttpRequests().anyRequest().permitAll();
         http.addFilterBefore(jwtRequestFilter, AuthorizationFilter.class);
-        http.authorizeHttpRequests().requestMatchers("/api/v1/auth/createUser","/api/v1/auth/createPropertyOwner","/api/v1/auth/login")
-                .permitAll()
-                .requestMatchers("/api/v1/property/addProperty").hasRole("OWNER")
-                .requestMatchers("/api/v1/auth/createPropertyManager").hasRole("ADMIN")
-                .anyRequest().authenticated();
+        http.authorizeHttpRequests().anyRequest().permitAll();
+//        http.authorizeHttpRequests().requestMatchers("/api/v1/auth/createUser","/api/v1/auth/createPropertyOwner","/api/v1/auth/login")
+//                .permitAll()
+//                .requestMatchers("/api/v1/property/addProperty").hasRole("OWNER")
+//                .requestMatchers("/api/v1/auth/createPropertyManager").hasRole("ADMIN")
+//                .anyRequest().authenticated();
         return http.build();
     }
 }

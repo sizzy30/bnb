@@ -1,4 +1,4 @@
-package com.airbnb;
+package com.airbnb.repository;
 
 import com.airbnb.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;

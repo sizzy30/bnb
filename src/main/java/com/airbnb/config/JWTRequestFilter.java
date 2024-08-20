@@ -1,6 +1,6 @@
 package com.airbnb.config;
 
-import com.airbnb.AppUserRepository;
+import com.airbnb.repository.AppUserRepository;
 import com.airbnb.entity.AppUser;
 import com.airbnb.service.JWTService;
 import jakarta.servlet.FilterChain;
